@@ -11,6 +11,7 @@ public class FlightServiceImpl implements IFlightService {
 	@Override
 	public int addFlight(int flightnumber) {
 		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 

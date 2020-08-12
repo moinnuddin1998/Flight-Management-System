@@ -2,7 +2,7 @@ package com.capg.fms.microservice.flight.model;
 
 public class FlightBean {
 	
-     private int flightNumber;
+    private int flightNumber;
 	private String flightModel;
 	private String carrierName;
 	private int seatCapacity;
