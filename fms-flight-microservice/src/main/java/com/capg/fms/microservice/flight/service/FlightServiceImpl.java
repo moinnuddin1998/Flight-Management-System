@@ -6,6 +6,7 @@ public class FlightServiceImpl implements IFlightService {
 	public int deleteFlight(int flightNumber) {
 		
 		return 0;
+		
 	}
 
 	@Override

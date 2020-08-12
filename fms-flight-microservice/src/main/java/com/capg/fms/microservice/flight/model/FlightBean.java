@@ -8,6 +8,7 @@ public class FlightBean {
 	private int seatCapacity;
 	
 	public int getFlightNumber() {
+		
 		return flightNumber;
 	}
 	public void setFlightNumber(int flightNumber) {

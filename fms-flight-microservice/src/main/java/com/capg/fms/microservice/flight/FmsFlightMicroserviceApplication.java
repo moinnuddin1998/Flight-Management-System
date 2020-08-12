@@ -8,6 +8,7 @@ public class FmsFlightMicroserviceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FmsFlightMicroserviceApplication.class, args);
+		
 	}
 
 }

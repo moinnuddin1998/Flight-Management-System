@@ -8,7 +8,7 @@ public interface IFlightService {
 	
 	public int deleteFlight(int flightNumber);
 	
-   public int  addFlight(int flightnumber );
+    public int  addFlight(int flightnumber );
 	
 
 	
