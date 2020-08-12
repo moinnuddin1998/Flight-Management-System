@@ -8,4 +8,10 @@ public class FlightServiceImpl implements IFlightService {
 		return 0;
 	}
 
+	@Override
+	public int addFlight(int flightnumber) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
