@@ -5,17 +5,16 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.capg.fms.passenger.exceptions.EmptyPassengerListException;
 import com.capg.fms.passenger.exceptions.InvalidInputException;
 import com.capg.fms.passenger.exceptions.PassengerAlreadyExistException;
 import com.capg.fms.passenger.exceptions.PassengerNotFoundException;
 
-@RestController
-@ControllerAdvice
+@RestControllerAdvice
 public class PassengerErrorController {
 
-	
 	@ResponseStatus(code = HttpStatus.ALREADY_REPORTED, reason = "Passenger Already Exist", value = HttpStatus.ALREADY_REPORTED)
 	@ExceptionHandler(PassengerAlreadyExistException.class)
 	public void handlePassengerAlreadyExistsException(){
