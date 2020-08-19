@@ -1,7 +1,13 @@
 package com.capg.fms.passenger.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Passenger_info")
 public class Passenger {
-  
+       @Id
 	 private long passengerNumber;
 	 private String passengerName;
 	 private int passengerAge;
