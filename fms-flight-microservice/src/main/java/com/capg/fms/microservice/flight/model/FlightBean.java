@@ -26,13 +26,13 @@ public class FlightBean {
 	
 	private String carrierName;
 
-	private long seatCapacity;
+	private int seatCapacity;
 	
 	public FlightBean() {
 		super();
 	}
 
-	public FlightBean(long flightNumber, String flightModel, String carrierName, long seatCapacity) {
+	public FlightBean(long flightNumber, String flightModel, String carrierName, int seatCapacity) {
 		super();
 		this.flightNumber = flightNumber;
 		this.flightModel = flightModel;
@@ -58,10 +58,10 @@ public class FlightBean {
 	public void setCarrierName(String carrierName) {
 		this.carrierName = carrierName;
 	}
-	public long getSeatCapacity() {
+	public int getSeatCapacity() {
 		return seatCapacity;
 	}
-	public void setSeatCapacity(long seatCapacity) {
+	public void setSeatCapacity(int seatCapacity) {
 		this.seatCapacity = seatCapacity;
 	}
 	public String toString() {
