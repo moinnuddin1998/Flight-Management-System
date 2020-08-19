@@ -1,23 +1,29 @@
 package com.capg.fms.schedule.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ScheduledFlight {
 
-	
+	@Id
+	private int scheduledFlightId;
 	private int availableSeats;
+	@OneToOne(cascade = { CascadeType.ALL })
 	private Schedule schedule;
-	private Flight flight;
+	private long flightNumber;
 	public ScheduledFlight() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ScheduledFlight(int availableSeats, Schedule schedule, Flight flight) {
+	public ScheduledFlight(int scheduledFlightId,int availableSeats, Schedule schedule, long flightNumber) {
 		super();
 		this.availableSeats = availableSeats;
 		this.schedule = schedule;
-		this.flight = flight;
+	    this.scheduledFlightId = scheduledFlightId;
+		this.flightNumber = flightNumber;
 	}
 	public int getAvailableSeats() {
 		return availableSeats;
@@ -25,23 +31,30 @@ public class ScheduledFlight {
 	public void setAvailableSeats(int availableSeats) {
 		this.availableSeats = availableSeats;
 	}
+	public int getScheduledFlightId() {
+		return scheduledFlightId;
+	}
+	public void setScheduledFlightId(int scheduledFlightId) {
+		this.scheduledFlightId = scheduledFlightId;
+	}
 	public Schedule getSchedule() {
 		return schedule;
 	}
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
 	}
-	public Flight getFlight() {
-		return flight;
+	public long getFlightNumber() {
+		return flightNumber;
 	}
-	public void setFlight(Flight flight) {
-		this.flight = flight;
+	public void setFlightNumber(long flightNumber) {
+		this.flightNumber = flightNumber;
 	}
 	@Override
 	public String toString() {
-		return "ScheduledFlight [availableSeats=" + availableSeats + ", schedule=" + schedule + ", flight=" + flight
-				+ "]";
+		return "ScheduledFlight [scheduledFlightId=" + scheduledFlightId + ", availableSeats=" + availableSeats
+				+ ", schedule=" + schedule + ", flightNumber=" + flightNumber + "]";
 	}
+	
 	
 	
 	

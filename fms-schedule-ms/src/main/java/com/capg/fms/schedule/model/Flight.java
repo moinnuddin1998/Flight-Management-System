@@ -3,11 +3,10 @@ package com.capg.fms.schedule.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+
 public class Flight {
 
-	@Id
-	public long flightNumber;
+	
 	public String flightModel;
 	public String carrierName;
 	public int seatCapacity;
@@ -17,14 +16,7 @@ public class Flight {
 		// TODO Auto-generated constructor stub
 	}
 
-	public long getFlightNumber() {
-		return flightNumber;
-	}
 	
-	public void setFlightNumber(long flightNumber) {
-		this.flightNumber = flightNumber;
-	}
-
 	public String getFlightModel() {
 		return flightModel;
 	}
@@ -51,9 +43,9 @@ public class Flight {
 
 
 
-	public Flight(long flightNumber, String flightModel, String carrierName, int seatCapacity) {
+	public Flight( String flightModel, String carrierName, int seatCapacity) {
 		super();
-		this.flightNumber = flightNumber;
+		
 		this.flightModel = flightModel;
 		this.carrierName = carrierName;
 		this.seatCapacity = seatCapacity;
@@ -61,7 +53,7 @@ public class Flight {
 
 	@Override
 	public String toString() {
-		return "Flight [flightNumber=" + flightNumber + ", flightModel=" + flightModel + ", carrierName=" + carrierName
+		return "Flight [ flightModel=" + flightModel + ", carrierName=" + carrierName
 				+ ", seatCapacity=" + seatCapacity + "]";
 	}
 

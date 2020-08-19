@@ -1,8 +1,8 @@
 package com.capg.fms.schedule.model;
 
-import javax.persistence.Entity;
 
-@Entity
+
+
 public class Airport {
 
 	private String airportName;
