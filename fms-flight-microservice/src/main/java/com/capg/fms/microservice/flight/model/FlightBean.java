@@ -1,13 +1,45 @@
 package com.capg.fms.microservice.flight.model;
 
+import javax.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.TableGenerator;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
+
+@Entity
+
+@Table(name="Flight_Info")
+
 public class FlightBean {
+	@Id
 	
-    private int flightNumber;
-	private String flightModel;
+    private long flightNumber;
+	 
+	private String flightModel;	
+	
 	private String carrierName;
-	private int seatCapacity;
+
+	private long seatCapacity;
 	
-	public int getFlightNumber() {
+	public FlightBean() {
+		super();
+	}
+
+	public FlightBean(long flightNumber, String flightModel, String carrierName, long seatCapacity) {
+		super();
+		this.flightNumber = flightNumber;
+		this.flightModel = flightModel;
+		this.carrierName = carrierName;
+		this.seatCapacity = seatCapacity;
+	}
+	public long getFlightNumber() {
 		
 		return flightNumber;
 	}
@@ -26,10 +58,10 @@ public class FlightBean {
 	public void setCarrierName(String carrierName) {
 		this.carrierName = carrierName;
 	}
-	public int getSeatCapacity() {
+	public long getSeatCapacity() {
 		return seatCapacity;
 	}
-	public void setSeatCapacity(int seatCapacity) {
+	public void setSeatCapacity(long seatCapacity) {
 		this.seatCapacity = seatCapacity;
 	}
 	public String toString() {

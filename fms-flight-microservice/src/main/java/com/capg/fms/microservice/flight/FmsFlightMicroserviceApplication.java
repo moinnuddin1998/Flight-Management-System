@@ -10,5 +10,5 @@ public class FmsFlightMicroserviceApplication {
 		SpringApplication.run(FmsFlightMicroserviceApplication.class, args);
 		
 	}
-
+		
 }
