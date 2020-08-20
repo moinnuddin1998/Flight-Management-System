@@ -3,6 +3,8 @@ package com.capg.fms.schedule.model;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Schedule {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int scheduleId;
 	@DateTimeFormat(pattern = "yyyy/MM/ddThh:mm:ss")
 	private LocalDateTime arrivalTime;
