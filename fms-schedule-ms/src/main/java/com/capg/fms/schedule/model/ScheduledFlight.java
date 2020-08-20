@@ -2,6 +2,8 @@ package com.capg.fms.schedule.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -9,13 +11,13 @@ import javax.persistence.OneToOne;
 public class ScheduledFlight {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int scheduledFlightId;
 	private int availableSeats;
 	@OneToOne(cascade = { CascadeType.ALL })
 	private Schedule schedule;
 	private long flightNumber;
 	public ScheduledFlight() {
-		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ScheduledFlight(int scheduledFlightId,int availableSeats, Schedule schedule, long flightNumber) {

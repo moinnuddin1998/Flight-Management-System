@@ -57,10 +57,11 @@ public class ScheduleController  {
 	}
 
     @DeleteMapping("/delete/id/{scheduledFlightId}")
-    public void deleteScheduledFlight(int scheduledFlightId) {
+    public String deleteScheduledFlight(@PathVariable int scheduledFlightId) {
     	
     	service.deleteScheduledFlight(scheduledFlightId);
     	
+    	return "Deleted succesfully";
     }
 
 
