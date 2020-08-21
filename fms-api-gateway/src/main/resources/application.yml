@@ -2,7 +2,7 @@ spring:
   apllication:
     name: fms-api-gateway
 server
-  port: 8686
+  port: 8687
   
 zuul:
   routes:

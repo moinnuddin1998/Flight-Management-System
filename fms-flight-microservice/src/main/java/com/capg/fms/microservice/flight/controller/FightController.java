@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capg.fms.microservice.flight.model.FlightBean;
+import com.capg.fms.microservice.flight.model.Flight;
 import com.capg.fms.microservice.flight.service.FlightServiceImpl;
 
 @RestController
@@ -26,25 +26,25 @@ public class FightController {
 	 
 	@PostMapping("/add")
 	@ResponseStatus(code=HttpStatus.CREATED)
-     public FlightBean addFlight(@RequestBody FlightBean flight)throws Exception{
+     public Flight addFlight(@RequestBody Flight flight)throws Exception{
 		return flightServiceImpl.addFlight(flight);
 	}
 	@DeleteMapping("/deleteById/{flightNumber}")
-	public String FlightBean (@PathVariable long flightNumber) throws Exception{
+	public String Flight (@PathVariable long flightNumber) throws Exception{
 		flightServiceImpl.deleteFlight(flightNumber);
 		return "your flight is deleted successfully" ;
 	}
 	
 	@PutMapping("/modify")
-	public FlightBean modifyFlight(@RequestBody FlightBean flight) throws Exception{
+	public Flight modifyFlight(@RequestBody Flight flight) throws Exception{
 		return flightServiceImpl.modifyFlight(flight);
 	}
 	@GetMapping("/all")
-	public List<FlightBean> getAllFlight() throws Exception{
+	public List<Flight> getAllFlight() throws Exception{
 		return flightServiceImpl.getAllFlights();
 	}
 	@GetMapping("/get/flightNumber/{flightNumber}")
-	public FlightBean getFlightById(@PathVariable("flightNumber") long flightNumber) throws Exception{
+	public Flight getFlightById(@PathVariable("flightNumber") long flightNumber) throws Exception{
 		return flightServiceImpl.getFlightById(flightNumber);
 	}
 	@ExceptionHandler(Exception.class)

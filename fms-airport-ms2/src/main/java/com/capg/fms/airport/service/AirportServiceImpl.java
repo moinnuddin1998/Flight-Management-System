@@ -48,7 +48,8 @@ public Airport getAirportByCode(String airportCode) {
 
 	@Override
 	public Airport getAirportByName(String airportName) {
-		return airportDao.findByAirportName(airportName);
+		Airport airport=airportDao.findByAirportName(airportName);
+		return airport;
 	}
 
 }

@@ -14,9 +14,9 @@ public class ScheduledFlight {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int scheduledFlightId;
 	private int availableSeats;
+    private long flightNumber;
 	@OneToOne(cascade = { CascadeType.ALL })
 	private Schedule schedule;
-	private long flightNumber;
 	public ScheduledFlight() {
 		// TODO Auto-generated constructor stub
 	}
