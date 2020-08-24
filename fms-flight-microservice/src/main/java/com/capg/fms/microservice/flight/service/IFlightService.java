@@ -2,19 +2,19 @@ package com.capg.fms.microservice.flight.service;
 
 import java.util.List;
 
-import com.capg.fms.microservice.flight.model.FlightBean;
+import com.capg.fms.microservice.flight.model.Flight;
 
 public interface IFlightService {
 	
 	
-	public FlightBean addFlight(FlightBean flight);
+	public Flight addFlight(Flight flight);
 	
 	public void deleteFlight(long flightNumber);
 	
-	public List<FlightBean> getAllFlights();
+	public List<Flight> getAllFlights();
 	
-	 public FlightBean getFlightById(long flightNumber);
+	 public Flight getFlightById(long flightNumber);
 	 
-	 public FlightBean modifyFlight(FlightBean flight);
+	 public Flight modifyFlight(Flight flight);
 
 }

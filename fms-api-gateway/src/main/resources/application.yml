@@ -1,0 +1,27 @@
+spring:
+  apllication:
+    name: fms-api-gateway
+server
+  port: 8687
+  
+zuul:
+  routes:
+    fms-aiport:
+      path: /airport/**
+      service-id: fms-airport-ms
+      strip-prefix: false
+      
+     fms-flight:
+       path: /flight/**
+       service-id: fms-flight-microservice
+       strip-prefix: false
+       
+     fms-schedule:
+       path: /schedule/**
+       service-id: fms-schedule-ms
+       strip-prefix: false
+       
+     fms-passenger:
+       path: /passenger/**
+       service-id: fms-passenger-ms
+       strip-prefix: false      

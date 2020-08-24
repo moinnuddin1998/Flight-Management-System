@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.capg.fms.microservice.flight.exception.FlightAlreadyExistException;
 import com.capg.fms.microservice.flight.exception.FlightNotFoundException;
 import com.capg.fms.microservice.flight.exception.InvalidInputException;
-import com.capg.fms.microservice.flight.model.FlightBean;
+import com.capg.fms.microservice.flight.model.Flight;
 import com.capg.fms.microservice.flight.repo.FlightRepo;
 @Service
 public class FlightServiceImpl implements IFlightService {
@@ -21,7 +21,7 @@ public class FlightServiceImpl implements IFlightService {
 	
 	@Override
 	@Transactional
-	 public FlightBean addFlight (FlightBean flight) {
+	 public Flight addFlight (Flight flight) {
 		  System.out.println(flight);
 		  if(flightRepo.existsById(flight.getFlightNumber())) {
 			 throw new FlightAlreadyExistException("Flight Already Exits");
@@ -37,13 +37,13 @@ public class FlightServiceImpl implements IFlightService {
 	 }
 
 	@Override
-	public List<FlightBean> getAllFlights() {
+	public List<Flight> getAllFlights() {
 		// TODO Auto-generated method stub
 		return flightRepo.findAll();
 	}
 
 	@Override
-	public FlightBean getFlightById(long flightNumber) {
+	public Flight getFlightById(long flightNumber) {
 			// TODO Auto-generated method stub
 			if (!flightRepo.existsById(flightNumber)) {
 				throw new FlightNotFoundException(" Flight not found");
@@ -51,11 +51,11 @@ public class FlightServiceImpl implements IFlightService {
 			return flightRepo.findById(flightNumber).get();
 		}
 
-	public FlightBean modifyFlight(FlightBean flight) {
+	public Flight modifyFlight(Flight flight) {
 		if(!flightRepo.existsById(flight.getFlightNumber()))
 			throw new FlightNotFoundException("flight with Num : " +flight.getFlightNumber()+" Not Found");
 	
-		FlightBean newFlight=flightRepo.getOne(flight.getFlightNumber());
+		Flight newFlight=flightRepo.getOne(flight.getFlightNumber());
 		
 		newFlight.setFlightModel(flight.getFlightModel());
 		newFlight.setCarrierName(flight.getCarrierName());
