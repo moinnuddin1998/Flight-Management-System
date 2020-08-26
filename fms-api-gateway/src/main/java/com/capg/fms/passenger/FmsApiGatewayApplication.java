@@ -3,13 +3,15 @@ package com.capg.fms.passenger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class FmsPassengerMsApplication {
+@EnableZuulProxy
+public class FmsApiGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FmsPassengerMsApplication.class, args);
+		SpringApplication.run(FmsApiGatewayApplication.class, args);
 	}
 
 }
