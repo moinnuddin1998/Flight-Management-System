@@ -1,0 +1,27 @@
+Spring:
+  application:
+    name: fms-zuul-api-gateway
+server:
+  port: 8686
+
+zuul:
+  routes:
+    fms-airport:  
+      path: /airport/**
+      service-id: fms-airport-ms
+      strip-prefix: false
+      
+    fms-flight:
+      path: /flight/**
+      service-id: fms-flight-microservice
+      strip-prefix: false
+      
+    fms-schedule:
+      path: /scheduleflight/**
+      service-id: fms-schedule-ms
+      strip-prefix: false
+      
+    fms-passenger:
+      path: /passenger/**
+      service-id: fms-passenger-ms
+      strip-prefix: false

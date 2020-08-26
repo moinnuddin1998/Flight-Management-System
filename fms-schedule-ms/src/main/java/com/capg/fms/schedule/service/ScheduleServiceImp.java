@@ -1,9 +1,6 @@
 package com.capg.fms.schedule.service;
 
 import java.time.LocalDateTime;
-import java.util.Random;
-
-import javax.print.attribute.standard.SheetCollate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,13 +8,17 @@ import org.springframework.web.client.RestTemplate;
 
 import com.capg.fms.schedule.exceptions.ScheduleAlreadyExistsException;
 import com.capg.fms.schedule.exceptions.ScheduledFlightNotFoundException;
-import com.capg.fms.schedule.model.Airport;
 import com.capg.fms.schedule.model.Flight;
 import com.capg.fms.schedule.model.Schedule;
 import com.capg.fms.schedule.model.ScheduledFlight;
 import com.capg.fms.schedule.model.ScheduledFlightList;
 import com.capg.fms.schedule.repo.IScheduleRepo;
-
+/***************************************************************
+-Author                : Nagendra 
+-Created/Modified Date : 15/08/2020
+-Description           : ScheduleService class for 
+						  Schedule Management system
+*******************************************************************/
 @Service
 public class ScheduleServiceImp implements IScheduleService {
 
@@ -27,47 +28,26 @@ public class ScheduleServiceImp implements IScheduleService {
 	@Autowired
 	RestTemplate restTemplate;
 
+	/**
+	   * This method is used to process Add Schedule Flights. 
+	   * @param  flightNumber,ScheduedFlight : A  variable and an object  
+	   * @return String  : This returns String message,else else throws exception
+	 **/
 	@Override
-	public ScheduledFlight addScheduleFlight(ScheduledFlight scheduledFlight) throws ScheduleAlreadyExistsException {
+	public ScheduledFlight addScheduleFlight(long flightNumber, ScheduledFlight scheduledFlight)
+			throws ScheduleAlreadyExistsException, ScheduledFlightNotFoundException {
 
-		
-		  long flightNumber = scheduledFlight.getFlightNumber();
-		  
-		//  Flight flight =restTemplate.getForObject("http://localhost:8090/flight/get/flightNumber/" + flightNumber,Flight.class);
-		  
-		/*
-		 * Flight flightRest =
-		 * restTemplate.getForObject("http://localhost:8090/flight/get/flightNumber/"
-		 * +flightNumber , Flight.class);
-		 * 
-		 * 
-		 * System.out.println(flightRest);
-		 * scheduledFlight.setFlightNumber(flightRest.getFlightNumber());
-		 */
-		 		
-		/*
-		 * String sourceAirportName = scheduledFlight.getSchedule().getSourceAirport();
-		 * 
-		 * String destinationAirportName =
-		 * scheduledFlight.getSchedule().getDestinationAirport();
-		 * 
-		 * Airport sourceAirport = restTemplate
-		 * .getForObject("http://localhost:8089/airport/airportname/" +
-		 * sourceAirportName, Airport.class); //
-		 * System.out.println(sourceAirport.getAirportName()); //
-		 * scheduledFlight.getSchedule().setSourceAirport(sourceAirport.getAirportName()
-		 * );
-		 * 
-		 * Airport destinationAirport = restTemplate
-		 * .getForObject("http://localhost:8089/airport/airportname/" +
-		 * destinationAirportName, Airport.class);
-		 */		// scheduledFlight.getSchedule().setDestinationAirport(destinationAirport.
-		// getAirportName());
-		// System.out.println(sourceAirport.getAirportName());
-		// System.out.println(sourceAirport);
+		Flight flightRest = restTemplate.getForObject("http://localhost:8090/flight/get/flightNumber/" + flightNumber,
+				Flight.class);
+
+		System.out.println(flightRest);
+		if (flightNumber != flightRest.getFlightNumber()) {
+			throw new ScheduledFlightNotFoundException("Flight NOt Found");
+		}
+		scheduledFlight.setFlightNumber(flightRest.getFlightNumber());
+
 		scheduledFlight.getSchedule().setArrivalTime(LocalDateTime.now().minusHours(3));
 		scheduledFlight.getSchedule().setDepartureTime(LocalDateTime.now());
-		
 
 		if (repo.existsById(scheduledFlight.getScheduledFlightId())) {
 
@@ -77,6 +57,12 @@ public class ScheduleServiceImp implements IScheduleService {
 
 		return repo.save(scheduledFlight);
 	}
+	
+	/**
+	   * This method is used to  View Schedule Flight. 
+	   * @param  Scheduled Flight Id : a variable  
+	   * @return String  : returns that particualr Scheduled Flight
+	 **/
 
 	@Override
 	public ScheduledFlight viewScheduledFlight(int scheduleId) {
@@ -87,12 +73,23 @@ public class ScheduleServiceImp implements IScheduleService {
 		return repo.findById(scheduleId).get();
 	}
 
+	/**
+	   * This method is used to  View Schedule Flights. 
+	   * @return   : returns all the Scheduled flights from List 
+	 **/
+	
 	@Override
 	public ScheduledFlightList viewScheduledFlights() {
 
 		return new ScheduledFlightList(repo.findAll());
 	}
 
+	/**
+	   * This method is used to  Delete a Scheduled Flight. 
+	   * @param  Scheduled Flight Id : a variable  
+	   * @return String  : returns that particualr Scheduled Flight
+	 **/
+	
 	@Override
 	public void deleteScheduledFlight(int scheduledFlightId) {
 		if (!repo.existsById(scheduledFlightId)) {
@@ -103,6 +100,12 @@ public class ScheduleServiceImp implements IScheduleService {
 		repo.deleteById(scheduledFlightId);
 	}
 
+	/**
+	   * This method is used to Modify a Scheduled Flight. 
+	   * @param   : Variables present in Scheduled Flight  
+	   * @return String  : returns that particualr Scheduled Flight
+	 **/
+	
 	@Override
 	public ScheduledFlight modifyScheduledFlight(int scheduledFlightId, int availableSeats, long flightNumber,
 			Schedule schedule) {

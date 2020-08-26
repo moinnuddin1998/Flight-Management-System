@@ -30,8 +30,7 @@ public class Schedule {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Schedule(LocalDateTime arrivalTime, LocalDateTime departureTime, String sourceAirport,
-			String destinationAirport,int scheduleId) {
+	public Schedule(LocalDateTime arrivalTime, LocalDateTime departureTime, String sourceAirport,String destinationAirport,int scheduleId) {
 		super();
 		this.arrivalTime = arrivalTime;
 		this.departureTime = departureTime;
